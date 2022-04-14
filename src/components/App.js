@@ -3,7 +3,6 @@ import axios from "axios";
 import SearchBar from "./SearchBar";
 
 class App extends React.Component{
-
     //this function will actually get the value of the input
     onSearchSubmit(term){
         console.log(term)
@@ -12,6 +11,8 @@ class App extends React.Component{
             headers: {
                 Authorization: 'Client-ID ovCBcI4NQF1PuZV-56HDRiByJ0SXndeRgzslu4WbMIk'
             }
+        }).then(response => {
+            console.log(response.data.results)
         })
     }
     render(){
