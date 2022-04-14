@@ -2,18 +2,28 @@ import React from "react";
 
 class SearchBar extends React.Component{
 
-    onInputClick(){
-        console.log('input was clicked')
+    state = { term: ''}
+
+    //arrow functions are the most elegant way to avoid getting undefineds since it points to the class
+    onFormSubmit = e => {
+        e.preventDefault()
+
+        this.props.onSubmit(this.state.term)
     }
 
     //by removing the () assigned on the onChange prop in the input only a reference is passed and it's not called every time is rendered
     render(){
+        //setting up the value as state we control everything inside the 'react world'
         return (
             <div className="ui segment">
-                <form className="ui form">
+                <form onSubmit={this.onFormSubmit} className="ui form">
                     <div className="field">
                         <label>Image search:</label>
-                        <input type="text" onClick={this.onInputClick} onChange={(event) => console.log(event.target.value)}/>
+                        <input 
+                            type="text" 
+                            value={this.state.term} 
+                            onChange={e => this.setState({term: e.target.value})}
+                        />
                     </div>
                 </form>
             </div>
