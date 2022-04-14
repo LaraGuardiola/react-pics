@@ -2,8 +2,8 @@ import React from "react";
 
 class SearchBar extends React.Component{
 
-    onInputChange(event){
-        console.log(event.target.value)
+    onInputClick(){
+        console.log('input was clicked')
     }
 
     //by removing the () assigned on the onChange prop in the input only a reference is passed and it's not called every time is rendered
@@ -13,7 +13,7 @@ class SearchBar extends React.Component{
                 <form className="ui form">
                     <div className="field">
                         <label>Image search:</label>
-                        <input type="text" onChange={this.onInputChange}/>
+                        <input type="text" onClick={this.onInputClick} onChange={(event) => console.log(event.target.value)}/>
                     </div>
                 </form>
             </div>
